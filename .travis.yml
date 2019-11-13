@@ -5,8 +5,7 @@ before_install:
   - pip install -U pip setuptools
 install:
   - pip install pipenv
-  - pipenv install
-  - pipenv shell
+  - pipenv install --dev --skip-lock
 # verify the version is legit
 before_script:
   - nosetests -v

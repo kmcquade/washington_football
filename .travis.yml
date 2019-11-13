@@ -13,6 +13,7 @@ script:
   - invoke test.lint
   - invoke test.security
   - invoke test.unit
+
 #deploy:
 #  provider: pypi
 #  user: kinnairdm

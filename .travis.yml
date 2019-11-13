@@ -10,7 +10,6 @@ install:
 before_script:
   - nosetests -v
 script:
-  - invoke test.reminder
   - invoke test.lint
   - invoke test.security
   - invoke test.unit

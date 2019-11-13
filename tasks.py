@@ -10,8 +10,7 @@ ns.add_collection(test)
 
 
 @task()
-def reminder(c):
-    c.run("echo 'Washington football team will always be bad'")
+def reminder():
     suck(True)
 
 

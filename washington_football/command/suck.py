@@ -17,4 +17,6 @@ def suck(so_bad):
 
 
 def new_favorite_team(supplied_team):
+    print(
+        f"You provided {supplied_team}. Well too bad, you have to love another team now.")
     return "Ravens"

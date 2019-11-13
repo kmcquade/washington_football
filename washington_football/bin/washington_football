@@ -1,0 +1,17 @@
+#! /usr/bin/env python
+"""
+    Remind yourself why it's not worth it to root for a team that doesn't care about you.
+"""
+import click
+from washington_football import command
+
+
+@click.group()
+def washington_football():
+    """My favorite football team is complete garbage."""
+
+
+washington_football.add_command(command.suck.suck)
+
+if __name__ == '__main__':
+    washington_football()

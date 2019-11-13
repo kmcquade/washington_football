@@ -1,0 +1,26 @@
+language: python
+python:
+  - "3.7"
+before_install:
+  - pip install -U pip setuptools
+install:
+  - pip install pipenv
+  - pipenv install
+# verify the version is legit
+before_script:
+  - nosetests -v
+script:
+  - invoke test.lint
+  - invoke test.security
+  - invoke test.unit
+#deploy:
+#  provider: pypi
+#  user: kinnairdm
+#  password:
+#    secure: securestringbase4here
+#  distributions: sdist bdist_wheel
+#  skip_existing: true
+#  on:
+#    tags: true
+#    branch: master
+#    python: 3.7

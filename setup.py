@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="washington_football",
     include_package_data=True,
-    version="0.0.3.1",
+    version="0.0.3.2",
     author="Kinnaird McQuade",
     author_email="kinnairdm@gmail.com",
     description="Washington Redskins are god awful",

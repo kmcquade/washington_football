@@ -17,10 +17,13 @@ deploy:
   provider: pypi
   user: __token__
   password:
-    secure: K0MT6q6ysq+i/7Uto/+uWWS41IHCrsYo6AaHiOTGXCKAMlhNU2K5D5HQG6jDC5z6JvYPYYn7W+mtf4mTI5g3Qzlgx14ZC95ckvojmSU8hb3YDmStqKQ14u2k/np05SylcfXET7FMuYMzOGRWihgz9EVtmW4cNZcga4ejA8uod5DGVk0KmVcURMBMZ5ja3TErlHsywDHnZIyjbHIDNoXVUIeuK1zaTLGr6f5t4J2Q+vAcuGGH7jWWokpcwLQodh+D63PkIrC7Y+LXnDmtBmZmGNykkXG2HC2FH0Hxw3OZV4trz070c5t1QpsgJeos2rc8DzVgJT4/N38HW1q41OuC1geZms/DY9RKT6W+FSWOAedc/Y93Bdr9BirRZq7remyzuJpxQk8R6uA99OPPjl6QY9GxpGfqhva1JeqwQzD1+cdN8Tj2JQICJJEFS8/aX0vULAMqvnAMxczuwxUyII0gts0MStJ753v6WshailWoyvq+nVoSN1042vBR9isYdsWIW1nd/fZoiNgXhqIOeP1Rf6C6cqdwkPhkCNeZbAVvctjSYFxsmn8uBfugB+ED2knD1CuzbP8kKqg21HQ4pUrsCb5SoADsck2AHMBz/kR/WQaHqS21SzMrCB3UQos0+qqQ2b4ZEEmttATSpElVBHB3kRM17Faobt0H35J+MjsoP4k=
+    secure: xpiZF+qCmesS2Qib2blwc0arsEc3PWl8nAB2AIeNmT6iHkIDezkuh/i9pe4VNq0jj/68YFMhQDKbILyQiFwi2HcS/5Jy60l4+07XMC6+LVHS4i1s5ZWFC4HCHPFDGhY6qp7TPjKsUNpBK41O0ojkAsAKqVb9VB/1ckEBNRPJA8FeAca1dW5NGF4CuPFZM0yXjI0uWiNMmZE2ya6PYhBZPSIHw2L8Ctvo/F56/OGIPyIhPLBCyPy3lGkvuWbN00pqROfkni9Nb8V7XQz+xQWwoBhYBJS6ESbItgOq8JlDjSVP0FjUI6Y+bPbPSFDjAGWQ/m3XQXAz8QgsBT2KJkneYxjWamO/Mf66UmYU58g71UvVtIGByWYqS6JRa12Hg/t4B79sZMQVyOQQ4MRaTVOD5t+Nzb29OeUEJUP2puC1Imcrl+oRzdGSFRsou+tC2FgjQl7AQgtqnOSPehjNHlGZlWZTiAML1j70B8SsAcs+8pUDy7HdUg/3XsfvspiKE+cPoZuUQQDmpl5MLF7+JTif5rCZWopjw2FunMndi1SdeUmvytoS7MJ1KOpz5E8u99MCN7+krhvpqjkyGi8wmRYqpHA/MTZrrA6AeIYNfVpaG5M8wMtyDHB11fxI/GnHh6g5LoenrrSizrjWIZSdCGAtoY+/vI4sug6fa2IeLnfPB8w=
   distributions: sdist bdist_wheel
   skip_existing: true
   on:
     tags: true
     branch: master
-    python: 3.7
+    python:
+    - 3.6
+    - 3.7
+    - 3.8

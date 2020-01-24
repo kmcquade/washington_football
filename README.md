@@ -7,4 +7,4 @@ Testing it in this repository because my favorite football team is complete garb
 
 #### Build badges for another project - just trying this
 
-[![TravisCI Build Status](https://travis-ci.org/kmcquade/washington_football.svg?branch=master)](https://travis-ci.org/kmcquade/washington_football.svg?branch=master)
+[![TravisCI Build Status](https://travis-ci.org/kmcquade/washington_football.svg?branch=master)](https://travis-ci.org/kmcquade/washington_football/)

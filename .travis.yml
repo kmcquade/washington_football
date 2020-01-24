@@ -1,29 +1,26 @@
 language: python
 python:
-  - "3.7"
+- '3.6'
+- '3.7'
+- '3.8'
 before_install:
-  - pip install -U pip setuptools
+- pip install -U pip setuptools
 install:
-  - pip install pipenv
-  - pipenv install --dev --skip-lock
-# verify the version is legit
+- pip install pipenv
+- pipenv install --dev --skip-lock
 before_script:
-  - nosetests -v
-# For some reason, this is exiting with error 255.
-#  - invoke test.security
+- nosetests -v
 script:
-  - invoke test.lint
-  - invoke test.unit
-
+- invoke test.lint
+- invoke test.unit
 deploy:
   provider: pypi
   user: __token__
   password:
-    secure: "IThUcfla3ntLhtkZJuAUgILo4m1v3de23Is2F9IJ+dV55XRX0zHeUtpmjtXJkaAf1ul+rNqYFTDQSKoOcFpBEt7q6KKYpQ6h12VwUhIC2bXgeWBNWU4d0/xB07ZSG15OcIuzsWZC5U8K/aOi9Btx8sQ4mXEOVYgsodSZe96URy86gP55vviKzFnr3Xvtn9pOk9eUL6jEINw+Tz8MUoS/kUqpU2Bue9OmHpWnYCdxaAr7dqHyJ99YOO04agIlrPnY+olvtKbvHSvUl8XkXGcaTvhm9EGVlVXX9rXwzkkVKLN2LCxkViNXVjfbJbJZXEpmo3H/Av3mjTSxtWAqHN1kR6ldugQGjIHjTWsJ2+KGloRLjAlIQ77ZcKf+r9gyoZuGsTPMCPuZzNkMgIaAYzP1rjeiDSozXjqVaRX59Mg6OOQ6I2K5CVQV7e9/BtaN8yh9xirRvNCDIuBd6pCf69N1pFe3lWC5U0a5INCm4CIUX12RBnHIMB+UQzUSUm5Ux95YtS2BCtM8gytkicX8Y+XXhR7mv/Yr4hvgLoURKEbC0VyAWdZ1y0cLhgJ/ROAWQROkZiR4zj0YqavuLjirjoi7gtR7Bgh3Rmvd+s+SQhid13PO1U/lOeBMfmx94gNwMmR8QroMpIfDrDyz9klx3xG/kgFhokViowN6CK/Nij2+wjs="
-  server: https://test.pypi.org/legacy/
+    secure: K0MT6q6ysq+i/7Uto/+uWWS41IHCrsYo6AaHiOTGXCKAMlhNU2K5D5HQG6jDC5z6JvYPYYn7W+mtf4mTI5g3Qzlgx14ZC95ckvojmSU8hb3YDmStqKQ14u2k/np05SylcfXET7FMuYMzOGRWihgz9EVtmW4cNZcga4ejA8uod5DGVk0KmVcURMBMZ5ja3TErlHsywDHnZIyjbHIDNoXVUIeuK1zaTLGr6f5t4J2Q+vAcuGGH7jWWokpcwLQodh+D63PkIrC7Y+LXnDmtBmZmGNykkXG2HC2FH0Hxw3OZV4trz070c5t1QpsgJeos2rc8DzVgJT4/N38HW1q41OuC1geZms/DY9RKT6W+FSWOAedc/Y93Bdr9BirRZq7remyzuJpxQk8R6uA99OPPjl6QY9GxpGfqhva1JeqwQzD1+cdN8Tj2JQICJJEFS8/aX0vULAMqvnAMxczuwxUyII0gts0MStJ753v6WshailWoyvq+nVoSN1042vBR9isYdsWIW1nd/fZoiNgXhqIOeP1Rf6C6cqdwkPhkCNeZbAVvctjSYFxsmn8uBfugB+ED2knD1CuzbP8kKqg21HQ4pUrsCb5SoADsck2AHMBz/kR/WQaHqS21SzMrCB3UQos0+qqQ2b4ZEEmttATSpElVBHB3kRM17Faobt0H35J+MjsoP4k=
   distributions: sdist bdist_wheel
   skip_existing: true
   on:
-    tags: true # only deploy on tagged commits
-    branch: master # must come from master branch
+    tags: true
+    branch: master
     python: 3.7

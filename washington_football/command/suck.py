@@ -1,4 +1,9 @@
+import logging
 import click
+import click_log
+
+logger = logging.getLogger()
+click_log.basic_config(logger)
 
 
 @click.command()
@@ -7,6 +12,7 @@ import click
     is_flag=True,
     help='For some reason, you love a football team that just disappoints you again and again.'
 )
+@click_log.simple_verbosity_option(logger)
 def suck(so_bad):
     """Remind yourself why it's not worth it to root for a team that doesn't care about you"""
     if so_bad:

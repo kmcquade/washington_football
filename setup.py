@@ -1,10 +1,14 @@
 import setuptools
 import os
 import re
+
 HERE = os.path.dirname(__file__)
-
 VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
-
+TESTS_REQUIRE = [
+    'coverage',
+    'nose',
+    'pytest'
+]
 
 def get_version():
     init = open(os.path.join(HERE, 'washington_football/bin/', 'washington_football')).read()
@@ -25,6 +29,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/kmcquade/washington_football",
     packages=setuptools.find_packages(),
+    tests_require=TESTS_REQUIRE,
     install_requires=[
         'click',
         'click_log'

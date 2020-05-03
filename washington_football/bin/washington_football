@@ -2,7 +2,7 @@
 """
     Remind yourself why it's not worth it to root for a team that doesn't care about you.
 """
-__version__ = "0.0.14.0"
+__version__ = "0.0.15.0"
 import click
 from washington_football import command
 

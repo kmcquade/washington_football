@@ -44,19 +44,10 @@ jobs:
           pip install setuptools wheel twine
       - name: Publish package
 #        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@v1.1.0
+        uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
           password: ${{ secrets.PYPI_PASSWORD }}
-#      - name: create python package
-#        run: |
-#      - name: Publish a Python distribution to PyPI
-#        env:
-#          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-#          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-#        run: |
-#          python setup.py sdist bdist_wheel
-#          twine upload dist/*
 
   update-brew:
     needs: publish-package

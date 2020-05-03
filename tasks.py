@@ -1,7 +1,17 @@
 #! /bin/env python3
-
-from invoke import task, Collection
+import logging
+import sys
+import os
+from invoke import task, Collection, UnexpectedExit, Failure
 # from washington_football.command.suck import suck
+
+sys.path.append(
+    os.path.abspath(
+        os.path.join(os.path.dirname(__file__), os.path.pardir + "/washington_football/")
+    )
+)
+
+logger = logging.getLogger(__name__)
 
 # Create the necessary collections (namespaces)
 ns = Collection()
@@ -46,9 +56,24 @@ def run_tests(c):
     c.run('nosetests -v')
 
 
+@task
+def version_check(c):
+    """Print the version"""
+    try:
+        c.run('./washington_football/bin/washington_football --version', pty=True)
+    except UnexpectedExit as u_e:
+        logger.critical(f"FAIL! UnexpectedExit: {u_e}")
+        sys.exit(1)
+    except Failure as f_e:
+        logger.critical(f"FAIL: Failure: {f_e}")
+        sys.exit(1)
+
+
 build.add_task(build_package, 'build-package')
 build.add_task(install_package, 'install-package')
 
 test.add_task(security_scan, 'security')
 test.add_task(run_linter, 'lint')
 test.add_task(run_tests, 'unit')
+
+integration.add_task(version_check, "version")

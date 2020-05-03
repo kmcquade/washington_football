@@ -75,6 +75,7 @@ jobs:
           git pull origin master
           echo "$(git branch -v)"
           pipenv run poet -f washington_football > HomebrewFormula/washington_football.rb
+          git add washington_football/bin/washington_football HomebrewFormula/washington_football.rb
 #          git commit -m "update brew formula" washington_football/bin/washington_football HomebrewFormula/washington_football.rb || echo "No brew changes to commit"
-          git commit -m "update brew formula"
+          git commit -m "update brew formula" || echo "No brew changes to commit"
           git push -u origin master

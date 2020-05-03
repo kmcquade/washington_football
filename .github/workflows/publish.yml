@@ -70,7 +70,10 @@ jobs:
           git config --local user.name "GitHub Action"
           pipenv run pip install homebrew-pypi-poet
           pipenv run pip install washington_football -U
+          git remote -v
+          echo "$(git branch -v)"
           git pull origin master
+          echo "$(git branch -v)"
           pipenv run poet -f washington_football > HomebrewFormula/washington_football.rb
           git commit -m "update brew formula" washington_football/bin/washington_football HomebrewFormula/washington_football.rb || echo "No brew changes to commit"
-          git push origin master
+          git push -u origin master

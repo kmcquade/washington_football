@@ -1,4 +1,14 @@
 import setuptools
+import os
+import re
+HERE = os.path.dirname(__file__)
+
+VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
+
+
+def get_version():
+    init = open(os.path.join(HERE, 'washington_football', 'version.py')).read()
+    return VERSION_RE.search(init).group(1)
 
 
 with open("README.md", "r") as fh:
@@ -7,7 +17,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="washington_football",
     include_package_data=True,
-    version="0.0.4.0",
+    version=get_version(),
     author="Kinnaird McQuade",
     author_email="kinnairdm@gmail.com",
     description="Washington Redskins are god awful",
@@ -17,6 +27,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'click',
+        'click_log'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

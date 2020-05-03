@@ -4,9 +4,11 @@
 """
 import click
 from washington_football import command
+from washington_football.version import __version__
 
 
 @click.group()
+@click.version_option(version=__version__)
 def washington_football():
     """My favorite football team is complete garbage."""
 

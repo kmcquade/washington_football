@@ -21,6 +21,9 @@ ns.add_collection(test)
 build = Collection('build')
 ns.add_collection(build)
 
+unit = Collection('unit')
+ns.add_collection(unit)
+
 integration = Collection('integration')
 ns.add_collection(integration)
 
@@ -51,10 +54,6 @@ def run_linter(c):
     c.run('pylint washington_football/')
 
 
-@task
-def run_tests(c):
-    c.run('nosetests -v')
-
 
 @task
 def version_check(c):
@@ -69,11 +68,33 @@ def version_check(c):
         sys.exit(1)
 
 
+@task
+def run_nosetests(c):
+    c.run('nosetests -v')
+
+
+@task
+def run_pytest(c):
+    """Unit testing: Runs unit tests using `pytest`"""
+    c.run('echo "Running Unit tests"')
+    try:
+        c.run('python -m coverage run -m pytest -v')
+        c.run('python -m coverage report -m')
+    except UnexpectedExit as u_e:
+        logger.critical(f"FAIL! UnexpectedExit: {u_e}")
+        sys.exit(1)
+    except Failure as f_e:
+        logger.critical(f"FAIL: Failure: {f_e}")
+        sys.exit(1)
+
+
 build.add_task(build_package, 'build-package')
 build.add_task(install_package, 'install-package')
 
 test.add_task(security_scan, 'security')
 test.add_task(run_linter, 'lint')
-test.add_task(run_tests, 'unit')
+
+unit.add_task(run_nosetests, 'nose')
+unit.add_task(run_pytest, 'pytest')
 
 integration.add_task(version_check, "version")

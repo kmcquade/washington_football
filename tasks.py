@@ -43,6 +43,12 @@ def install_package(c):
 
 
 @task
+def uninstall_package(c):
+    """Uninstall the package"""
+    c.run('echo "y" | pip3 uninstall washington_football', pty=True)
+
+
+@task
 def security_scan(c):
     c.run('bandit -r washington_football/')
     c.run('safety check')
@@ -54,6 +60,7 @@ def run_linter(c):
     c.run('pylint washington_football/')
 
 
+@task(pre=[install_package])
 @task
 def version_check(c):
     """Print the version"""
@@ -89,6 +96,7 @@ def run_pytest(c):
 
 build.add_task(build_package, 'build-package')
 build.add_task(install_package, 'install-package')
+build.add_task(uninstall_package, 'uninstall-package')
 
 test.add_task(security_scan, 'security')
 test.add_task(run_linter, 'lint')

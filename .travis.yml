@@ -12,7 +12,9 @@ before_script:
 - nosetests -v
 script:
 - invoke test.lint
-- invoke test.unit
+- invoke test.security
+- invoke unit.pytest
+- invoke integration.version
 deploy:
   provider: pypi
   user: __token__

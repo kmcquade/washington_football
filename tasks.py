@@ -46,6 +46,7 @@ def install_package(c):
 def uninstall_package(c):
     """Uninstall the package"""
     c.run('echo "y" | pip3 uninstall washington_football', pty=True)
+    c.run('rm -rf dist/*', pty=True)
 
 
 @task

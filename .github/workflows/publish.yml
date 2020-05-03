@@ -26,6 +26,7 @@ jobs:
       - run: pipenv run invoke test.security
       - run: pipenv run invoke unit.pytest
       - run: pipenv run invoke integration.version
+      - run: pipenv run invoke build.uninstall-package
 
   publish-package:
     needs: test
@@ -40,10 +41,14 @@ jobs:
       - name: Install dependencies
         run: |
           pipenv install --dev
-          python -m pip install --upgrade pip
-          pip install setuptools wheel twine
+      - name: create python package
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git fetch --tags
+          git pull origin master
+          pipenv run python setup.py sdist bdist_wheel
       - name: Publish package
-#        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__

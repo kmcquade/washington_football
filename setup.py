@@ -7,7 +7,7 @@ VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
 
 
 def get_version():
-    init = open(os.path.join(HERE, 'washington_football', 'version.py')).read()
+    init = open(os.path.join(HERE, 'washington_football/bin/', 'washington_football')).read()
     return VERSION_RE.search(init).group(1)
 
 

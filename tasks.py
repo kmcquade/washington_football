@@ -54,7 +54,6 @@ def run_linter(c):
     c.run('pylint washington_football/')
 
 
-
 @task
 def version_check(c):
     """Print the version"""

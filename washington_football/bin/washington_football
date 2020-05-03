@@ -2,9 +2,9 @@
 """
     Remind yourself why it's not worth it to root for a team that doesn't care about you.
 """
+__version__ = "0.0.5.0"
 import click
 from washington_football import command
-from washington_football.version import __version__
 
 
 @click.group()

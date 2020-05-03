@@ -24,3 +24,8 @@ jobs:
       - run: pipenv run invoke test.security
       - run: pipenv run invoke unit.pytest
       - run: pipenv run invoke integration.version
+      - run: ls -al
+      - run: ls -al dist/
+      - run: pipenv run invoke build.uninstall-package
+      - run: ls -al
+      - run: ls -al dist/

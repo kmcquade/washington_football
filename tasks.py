@@ -11,6 +11,8 @@ sys.path.append(
     )
 )
 
+print(sys.path)
+
 logger = logging.getLogger(__name__)
 
 # Create the necessary collections (namespaces)

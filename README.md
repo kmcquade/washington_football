@@ -60,15 +60,7 @@ git push -u origin artifacts
 Then you can push all subsequent commits to that branch.
 
 ```bash
-git checkout master
-git config --local user.email "action@github.com"
-git config --local user.name "GitHub Action"
-git fetch --tags
-git pull origin master
-latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-echo "latest tag: $latest_tag"
-
-# Build the dist
+# Build the artifact
 # Pipenv
 pipenv install
 pipenv shell
@@ -80,9 +72,20 @@ python3 -m pip install -r requirements.txt
 python3 -m pip install --upgrade setuptools wheel
 python3 -m setup -q sdist bdist_wheel
 
-cp dist/* ./
 git checkout artifacts
+old_tar_file=$(ls *.tar.gz)
+old_wheel_file=$(ls *.whl)
+rm -f $old_tar_file
+rm -f $old_wheel_file
+cp dist/* ./
+
+# Get the latest version
+prefix=washington_football-
+suffix=.tar.gz
+version=$(ls *tar.gz | sed -e "s/^$prefix//" -e "s/$suffix$//")
+
 git add *.tar.gz *.whl
-git commit -m "Publish version ${latest_tag}"  *.tar.gz *.whl || echo "No changes to commit"
+git commit -m "Publish version ${version}"  *.tar.gz *.whl || echo "No changes to commit"
+git push origin artifacts
 ```
 

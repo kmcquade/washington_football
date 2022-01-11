@@ -64,11 +64,17 @@ git checkout master
 git config --local user.email "action@github.com"
 git config --local user.name "GitHub Action"
 git fetch --tags
-git pull origin main
+git pull origin master
 latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
 echo "latest tag: $latest_tag"
 
 # Build the dist
+# Pipenv
+pipenv install
+pipenv shell
+pipenv run python setup.py sdist bdist_wheel
+
+# requirements.txt
 python3 -m venv ./venv && source venv/bin/activate
 python3 -m pip install -r requirements.txt
 python3 -m pip install --upgrade setuptools wheel

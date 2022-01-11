@@ -10,8 +10,9 @@ TESTS_REQUIRE = [
     'pytest'
 ]
 
+
 def get_version():
-    init = open(os.path.join(HERE, 'washington_football/bin/', 'washington_football')).read()
+    init = open(os.path.join(HERE, 'washington_football/bin/', 'version.py')).read()
     return VERSION_RE.search(init).group(1)
 
 

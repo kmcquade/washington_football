@@ -2,7 +2,7 @@ tmp/*
 *.csv
 state.tf
 Pipfile.lock
-
+.jython_cache
 # Created by https://www.gitignore.io/api/macos,python,pycharm,jetbrains,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=macos,python,pycharm,jetbrains,visualstudiocode
 

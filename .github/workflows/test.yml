@@ -20,7 +20,7 @@ jobs:
           pip install pipenv
           pipenv install --dev --skip-lock
 
-      - run: pipenv run invoke test.lint
+#      - run: pipenv run invoke test.lint
 #      - run: pipenv run invoke test.security
       - run: pipenv run invoke unit.pytest
       - run: pipenv run invoke integration.version
